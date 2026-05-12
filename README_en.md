@@ -2,12 +2,13 @@
 
 [【English】](./README_en.md) [【中文】](./README.md)
 
-[CountClaw](https://github.com/CountClaw) helped me count the 370nd star, thank you!
+[ramigamalrihawi](https://github.com/ramigamalrihawi) helped me count the 370nd star, thank you!
 
 ## Stars
 
 | Stars | Avatar | starredAt |
 | -----: |-----: | -----: |
+| [ramigamalrihawi](https://github.com/ramigamalrihawi) | <img src="https://avatars.githubusercontent.com/u/17526866?s=64&u=31636c034b227486696b507eb871a6ab338a454b&v=4" alt="drawing" width="64"/> | 2026-05-12T23:46:16Z |
 | [CountClaw](https://github.com/CountClaw) | <img src="https://avatars.githubusercontent.com/u/264466111?s=64&u=0bc852aee4a3b9377aea144808feeef010abaece&v=4" alt="drawing" width="64"/> | 2026-04-10T16:29:01Z |
 | [georgedeath](https://github.com/georgedeath) | <img src="https://avatars.githubusercontent.com/u/5173737?s=64&u=f3162f39d183f7e49166eaf40176dd6dbe5a986b&v=4" alt="drawing" width="64"/> | 2025-06-17T16:02:15Z |
 | [votsie](https://github.com/votsie) | <img src="https://avatars.githubusercontent.com/u/131788269?s=64&u=9742b9fcdb7a7fe1b1c6f7e3a31ad81158dedc86&v=4" alt="drawing" width="64"/> | 2025-06-17T11:23:49Z |
@@ -112,7 +113,7 @@
 | [EstherBC](https://github.com/EstherBC) | <img src="https://avatars.githubusercontent.com/u/103827231?s=64&v=4" alt="drawing" width="64"/> | 2023-09-27T16:30:18Z |
 | [imzhengwei](https://github.com/imzhengwei) | <img src="https://avatars.githubusercontent.com/u/71369904?s=64&v=4" alt="drawing" width="64"/> | 2023-09-25T09:11:17Z |
 | [zhanghaolin1](https://github.com/zhanghaolin1) | <img src="https://avatars.githubusercontent.com/u/35892578?s=64&v=4" alt="drawing" width="64"/> | 2023-09-23T04:38:45Z |
-| [Yuanhimself](https://github.com/Yuanhimself) | <img src="https://avatars.githubusercontent.com/u/143302628?s=64&u=2d53bfa43a01a5d092c0469f2f15d427686090b3&v=4" alt="drawing" width="64"/> | 2023-09-22T13:14:36Z |
+| [yzysimpleabs](https://github.com/yzysimpleabs) | <img src="https://avatars.githubusercontent.com/u/143302628?s=64&u=2d53bfa43a01a5d092c0469f2f15d427686090b3&v=4" alt="drawing" width="64"/> | 2023-09-22T13:14:36Z |
 | [62377873](https://github.com/62377873) | <img src="https://avatars.githubusercontent.com/u/56135472?s=64&v=4" alt="drawing" width="64"/> | 2023-09-22T08:02:23Z |
 | [zhaojinhan11](https://github.com/zhaojinhan11) | <img src="https://avatars.githubusercontent.com/u/121793538?s=64&v=4" alt="drawing" width="64"/> | 2023-09-21T13:03:24Z |
 | [admin2012-1](https://github.com/admin2012-1) | <img src="https://avatars.githubusercontent.com/u/104708856?s=64&v=4" alt="drawing" width="64"/> | 2023-09-21T10:07:46Z |
@@ -197,7 +198,7 @@
 | [1725910529](https://github.com/1725910529) | <img src="https://avatars.githubusercontent.com/u/79946112?s=64&v=4" alt="drawing" width="64"/> | 2023-07-27T10:10:23Z |
 | [mud-ali](https://github.com/mud-ali) | <img src="https://avatars.githubusercontent.com/u/96320211?s=64&u=b5277a96bf0f5e35e287818ddf1a919b5e4bb819&v=4" alt="drawing" width="64"/> | 2023-07-26T22:18:19Z |
 | [sun8809](https://github.com/sun8809) | <img src="https://avatars.githubusercontent.com/u/60999485?s=64&v=4" alt="drawing" width="64"/> | 2023-07-26T21:38:44Z |
-| [HammerMax](https://github.com/HammerMax) | <img src="https://avatars.githubusercontent.com/u/42595878?s=64&v=4" alt="drawing" width="64"/> | 2023-07-26T13:52:23Z |
+| [HammerMax](https://github.com/HammerMax) | <img src="https://avatars.githubusercontent.com/u/42595878?s=64&u=f1f9a47ef2b7a000401bc2886ac8454ed688ec34&v=4" alt="drawing" width="64"/> | 2023-07-26T13:52:23Z |
 | [genius-alray](https://github.com/genius-alray) | <img src="https://avatars.githubusercontent.com/u/47408535?s=64&u=2fd1069e95574b61775adb8b236551cafe1edacb&v=4" alt="drawing" width="64"/> | 2023-07-25T11:14:19Z |
 | [th114514](https://github.com/th114514) | <img src="https://avatars.githubusercontent.com/u/140413667?s=64&v=4" alt="drawing" width="64"/> | 2023-07-24T13:55:04Z |
 | [apoint123](https://github.com/apoint123) | <img src="https://avatars.githubusercontent.com/u/108002475?s=64&v=4" alt="drawing" width="64"/> | 2023-07-24T11:05:17Z |
@@ -306,7 +307,6 @@
 | [blu3ci](https://github.com/blu3ci) | <img src="https://avatars.githubusercontent.com/u/83841789?s=64&u=4be69251a7d46ae5b0e3e8b5efe0a9d14e074582&v=4" alt="drawing" width="64"/> | 2023-04-07T02:21:53Z |
 | [yanzhaoWW](https://github.com/yanzhaoWW) | <img src="https://avatars.githubusercontent.com/u/127864763?s=64&v=4" alt="drawing" width="64"/> | 2023-04-04T12:30:18Z |
 | [Wenti-D](https://github.com/Wenti-D) | <img src="https://avatars.githubusercontent.com/u/73067578?s=64&u=c16d7003680f103be8ccdb0a8c1ea432f08e4576&v=4" alt="drawing" width="64"/> | 2023-03-17T05:24:37Z |
-| [heyejiang](https://github.com/heyejiang) | <img src="https://avatars.githubusercontent.com/u/69866274?s=64&u=2a1e85b31f436e91a9d57feb40b3932a39d9e4c2&v=4" alt="drawing" width="64"/> | 2023-03-05T15:40:19Z |
 | [weihongfei](https://github.com/weihongfei) | <img src="https://avatars.githubusercontent.com/u/11779931?s=64&v=4" alt="drawing" width="64"/> | 2023-02-16T15:20:08Z |
 | [Nick-Mth](https://github.com/Nick-Mth) | <img src="https://avatars.githubusercontent.com/u/125559465?s=64&v=4" alt="drawing" width="64"/> | 2023-02-16T10:58:14Z |
 | [plsowen](https://github.com/plsowen) | <img src="https://avatars.githubusercontent.com/u/124237763?s=64&v=4" alt="drawing" width="64"/> | 2023-02-02T06:30:04Z |
