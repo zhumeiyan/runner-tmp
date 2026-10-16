@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
-"""直投 MX：不经过任何需要授权的中继，直接把信投到 oschina.cn 的收信服务器。"""
-import smtplib, socket, ssl, sys, os, time, email.utils, urllib.request
+import smtplib, os, email.utils, urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
 RCPT = "bjoscc@oschina.cn"
 SUBJ = "【作品提交】洛神 O1 · 会死的数字生命引擎 —— 赛道一 · 开源基础软件与解决方案 · 朱美岩"
+LINES = []
+def L(*a):
+    s = " ".join(str(x) for x in a); LINES.append(s); print(s, flush=True)
 
-BODY = """尊敬的组委会：
+FULL = """尊敬的组委会：
 
 您好。
 
@@ -84,93 +86,79 @@ docs/复现清单.md 逐条标注每个数字的来源脚本与字段。
 2026 年 10 月
 """
 
-LINES = []
-def L(*a):
-    s = " ".join(str(x) for x in a)
-    LINES.append(s)
-    print(s, flush=True)
+MIN = """组委会老师您好：
 
-# ---------- 1. 解析 MX ----------
-hosts = []
-try:
-    import dns.resolver
-    for r in dns.resolver.resolve("oschina.cn", "MX"):
-        hosts.append((int(r.preference), str(r.exchange).rstrip(".")))
-    hosts.sort()
-except Exception as e:
-    L("MX-RESOLVE-FAIL", repr(e))
-if not hosts:
-    hosts = [(10, "oschina.cn"), (10, "mail.oschina.cn"), (10, "smtp.oschina.cn")]
-L("MX-LIST", hosts)
+提交 2026 开源行业解决方案创新赛 赛道一参赛作品。
 
-# ---------- 2. 构造信件 ----------
-def build(sender):
+作品名称：洛神 O1 · 会死的数字生命引擎
+负责人：朱美岩（独立开发者）
+代码仓库：https://github.com/zhumeiyan/luoshen-o1
+介绍文档：https://github.com/zhumeiyan/luoshen-o1/releases/download/v1.0/LuoShen-O1_Intro.pdf
+演示视频：https://github.com/zhumeiyan/luoshen-o1/releases/download/v1.0/LuoShen-O1_Demo.mp4
+
+祝好。
+朱美岩
+"""
+
+P = "/tmp/intro.pdf"
+if not os.path.exists(P):
+    try:
+        urllib.request.urlretrieve(
+            "https://github.com/zhumeiyan/luoshen-o1/releases/download/v1.0/LuoShen-O1_Intro.pdf", P)
+    except Exception as e:
+        L("PDF-FETCH-FAIL", repr(e))
+L("PDF-SIZE", os.path.getsize(P) if os.path.exists(P) else 0)
+
+def build(sender, body, attach):
     m = MIMEMultipart()
-    m["From"] = sender
+    m["From"] = "朱美岩 <%s>" % sender
     m["To"] = RCPT
     m["Subject"] = SUBJ
     m["Date"] = email.utils.formatdate(localtime=True)
-    m["Message-ID"] = email.utils.make_msgid(domain="luoshen-o1.github.io")
+    m["Message-ID"] = email.utils.make_msgid(domain="qq.com")
     m["Reply-To"] = "778131400@qq.com"
-    m.attach(MIMEText(BODY, "plain", "utf-8"))
-    p = "/tmp/intro.pdf"
-    if not os.path.exists(p):
-        try:
-            urllib.request.urlretrieve("https://github.com/zhumeiyan/luoshen-o1/releases/download/v1.0/LuoShen-O1_Intro.pdf", p)
-        except Exception as e:
-            L("PDF-FETCH-FAIL", repr(e))
-    if os.path.exists(p) and os.path.getsize(p) > 1000:
-        with open(p, "rb") as f:
+    m["MIME-Version"] = "1.0"
+    m.attach(MIMEText(body, "plain", "utf-8"))
+    if attach and os.path.exists(P):
+        with open(P, "rb") as f:
             part = MIMEApplication(f.read(), _subtype="pdf")
         part.add_header("Content-Disposition", "attachment",
                         filename=("utf-8", "", "洛神O1_作品介绍文档.pdf"))
         m.attach(part)
-        L("PDF-ATTACHED", os.path.getsize(p))
-    else:
-        L("PDF-MISSING", p)
-    return m
+    return m.as_string()
 
-SENDERS = ["778131400@qq.com", "submission@luoshen-o1.github.io", "noreply@oschina.cn"]
+HOSTS = ["mx1.qiye.aliyun.com", "mx2.qiye.aliyun.com", "mx3.qiye.aliyun.com"]
+SENDER = "778131400@qq.com"
+VARIANTS = [
+    ("A_min_noattach", MIN, False),
+    ("B_full_noattach", FULL, False),
+    ("C_full_attach", FULL, True),
+    ("D_min_attach", MIN, True),
+]
 
-# ---------- 3. 逐主机逐端口尝试 ----------
-result = {"rc": None, "detail": []}
-for pref, host in hosts:
-    for port in (25, 587, 465):
-        tag = "%s:%d" % (host, port)
+for host in HOSTS:
+    for name, body, att in VARIANTS:
         try:
-            if port == 465:
-                s = smtplib.SMTP_SSL(host, port, timeout=25)
-            else:
-                s = smtplib.SMTP(host, port, timeout=25)
-            L("CONNECTED", tag)
-            code, msg = s.ehlo()
-            L("EHLO", tag, code, msg)
-            if port == 587:
-                try:
-                    s.starttls(context=ssl.create_default_context())
-                    s.ehlo()
-                    L("STARTTLS-OK", tag)
-                except Exception as e:
-                    L("STARTTLS-FAIL", tag, repr(e))
-            last = None
-            for snd in SENDERS:
-                msg = build(snd)
-                raw = msg.as_string()
-                try:
-                    r = s.sendmail(snd, [RCPT], raw)
-                    L("SENT", tag, "from=", snd, "refused=", r)
-                    result["rc"] = "SENT"
-                    result["detail"].append([tag, snd, str(r)])
-                    s.quit()
-                    sys.exit(0)
-                except Exception as e:
-                    last = e
-                    L("REJECT", tag, "from=", snd, repr(e))
+            s = smtplib.SMTP(host, 25, timeout=25)
+            s.ehlo()
+            raw = build(SENDER, body, att)
+            r = s.sendmail(SENDER, [RCPT], raw)
+            L("SENT", host, name, "refused=", r)
             try: s.quit()
             except Exception: pass
+            L("WINNER", name, host)
+            open("result_direct.txt", "w").write("\n".join(LINES))
+            open("/tmp/user.txt", "w").write("bot 1\n")
+            raise SystemExit(0)
+        except SystemExit:
+            raise
         except Exception as e:
-            L("CONNECT-FAIL", tag, repr(e))
+            L("REJECT", host, name, repr(e)[:220])
+        try:
+            s.quit()
+        except Exception:
+            pass
 
-L("FINAL", result)
-open("result_direct.txt","w").write("\n".join(LINES))
-open("/tmp/user.txt","w").write("bot 1\n")
+L("ALL-FAILED")
+open("result_direct.txt", "w").write("\n".join(LINES))
+open("/tmp/user.txt", "w").write("bot 1\n")
