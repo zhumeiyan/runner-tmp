@@ -1,32 +1,5 @@
-=== DIAG ===
-smtp.qq.com:465 greeting=b'220 newxmesmtplogicsvrszb51-1.qq.com XMail Esmtp QQ Mail Server.\r\n'
-  ehlo=b'250-newxmesmtplogicsvrszb51-1.qq.com\r\n250-PIPELINING\r\n250-SIZE 73400320\r\n250-AUTH LOGIN PLAIN XOAUTH XOAUTH2\r\n250-AUTH=LOGIN\r\n250-MAILCOMPRESS\r\n250-SMTPUTF8\r\n250 8BITMIME\r\n'
-  auth=b'334 VXNlcm5hbWU6\r\n'
-  user_resp=b'334 UGFzc3dvcmQ6\r\n'
-  pass_resp=b'535 Login fail. Account is abnormal, service is not open, password is incorrect, login frequency limited, or system is busy. More information at https://help.mail.qq.com/detail/108/1023\r\n'
-smtp.qq.com:587 greeting=b'220 newxmesmtplogicsvrszb51-0.qq.com XMail Esmtp QQ Mail Server.\r\n'
-  ehlo=b'250-newxmesmtplogicsvrszb51-0.qq.com\r\n250-PIPELINING\r\n250-SIZE 73400320\r\n250-STARTTLS\r\n250-AUTH LOGIN PLAIN XOAUTH XOAUTH2\r\n250-AUTH=LOGIN\r\n250-MAILCOMPRESS\r\n250-SMTPUTF8\r\n250 8BITMIME\r\n'
-  starttls=b'220 Ready to start TLS from 172.214.47.17 to newxmesmtplogicsvrszb51-0.qq.com.\r\n'
-  auth=b'334 VXNlcm5hbWU6\r\n'
-  user_resp=b'334 UGFzc3dvcmQ6\r\n'
-  pass_resp=b'535 Login fail. Account is abnormal, service is not open, password is incorrect, login frequency limited, or system is busy. More information at https://help.mail.qq.com/detail/108/1023\r\n'
-smtp.exmail.qq.com:465 greeting=b'220 smtp.qq.com Esmtp QQ QMail Server\r\n'
-  ehlo=b'250-smtp.qq.com\r\n250-PIPELINING\r\n250-SIZE 73400320\r\n250-AUTH LOGIN PLAIN\r\n250-AUTH=LOGIN\r\n250-MAILCOMPRESS\r\n250 8BITMIME\r\n'
-  auth=b'334 VXNlcm5hbWU6\r\n'
-  user_resp=b'334 UGFzc3dvcmQ6\r\n'
-  pass_resp=b'535 Error: authentication failed, system busy\r\n'
-=== EXCEPTION ===
-Traceback (most recent call last):
-  File "/home/runner/work/runner-tmp/runner-tmp/main.py", line 195, in <module>
-    rc = main()
-  File "/home/runner/work/runner-tmp/runner-tmp/main.py", line 189, in main
-    s.login(USER, PWD)
-  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/smtplib.py", line 739, in login
-    (code, resp) = self.auth(
-  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/smtplib.py", line 642, in auth
-    (code, resp) = self.docmd("AUTH", mechanism + " " + response)
-  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/smtplib.py", line 432, in docmd
-    return self.getreply()
-  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/smtplib.py", line 405, in getreply
-    raise SMTPServerDisconnected("Connection unexpectedly closed")
-smtplib.SMTPServerDisconnected: Connection unexpectedly closed
+parsed: user='<redacted>' pwd_len=8
+TRY <redacted> -> FAIL SMTPServerDisconnected: Connection unexpectedly closed
+TRY 778131400 -> FAIL SMTPServerDisconnected: Connection unexpectedly closed
+TRY <redacted> -> FAIL SMTPServerDisconnected: Connection unexpectedly closed
+TRY 778131400 -> FAIL SMTPServerDisconnected: Connection unexpectedly closed
