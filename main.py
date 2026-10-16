@@ -121,6 +121,7 @@ docs/\u590d\u73b0\u6e05\u5355.md \u9010\u6761\u6807\u6ce8\u6bcf\u4e2a\u6570\u5b5
 """
 
 
+DIAG_TXT = ""
 def diag():
     import socket, ssl as _ssl, base64 as _b64, os as _os
     out=[]
@@ -158,8 +159,10 @@ def main():
     if not USER or not PWD:
         print("ERR: credential missing (user=%s pwd_len=%d)" % (bool(USER), len(PWD))); return 2
     print("credential parsed: user=%s pwd_len=%d" % (USER[:3]+"***@qq.com", len(PWD)))
+    global DIAG_TXT
+    DIAG_TXT = diag()
     print("=== SMTP DIAG ===")
-    print(diag())
+    print(DIAG_TXT)
     pdf = None
     try:
         req = urllib.request.Request(PDF, headers={"User-Agent": "Mozilla/5.0"})
@@ -197,5 +200,5 @@ except Exception:
     t = buf.getvalue()
     for secret in filter(None, [USER, PWD]):
         t = t.replace(secret, "<redacted>")
-    open("out.txt","w").write("EXCEPTION\n"+t)
+    open("out.txt","w").write("=== DIAG ===\n"+DIAG_TXT+"\n=== EXCEPTION ===\n"+t)
 sys.exit(0)
