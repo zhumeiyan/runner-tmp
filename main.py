@@ -158,8 +158,8 @@ def main():
     if not USER or not PWD:
         print("ERR: credential missing (user=%s pwd_len=%d)" % (bool(USER), len(PWD))); return 2
     print("credential parsed: user=%s pwd_len=%d" % (USER[:3]+"***@qq.com", len(PWD)))
-    if _os.environ.get("DIAG"):
-        print(diag()); return 0
+    print("=== SMTP DIAG ===")
+    print(diag())
     pdf = None
     try:
         req = urllib.request.Request(PDF, headers={"User-Agent": "Mozilla/5.0"})
