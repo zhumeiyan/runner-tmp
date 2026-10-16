@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys, os, ssl, smtplib, traceback, urllib.request
+import sys, os as _os, ssl, smtplib, traceback, urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
@@ -120,10 +120,46 @@ docs/\u590d\u73b0\u6e05\u5355.md \u9010\u6761\u6807\u6ce8\u6bcf\u4e2a\u6570\u5b5
 2026 \u5e74 10 \u6708
 """
 
+
+def diag():
+    import socket, ssl as _ssl, base64 as _b64, os as _os
+    out=[]
+    for host,port,mode in [("smtp.qq.com",465,"ssl"),("smtp.qq.com",587,"starttls"),("smtp.exmail.qq.com",465,"ssl")]:
+        try:
+            s=socket.create_connection((host,port),timeout=20)
+            if mode=="ssl":
+                s=_ssl.create_default_context().wrap_socket(s,server_hostname=host)
+            f=s.makefile("rb")
+            greet=f.readline(); out.append("%s:%d greeting=%r"%(host,port,greet[:120]))
+            s.sendall(b"EHLO localhost\r\n")
+            ehlo=b""
+            while True:
+                line=f.readline()
+                ehlo+=line
+                if not line or line[3:4]==b" ": break
+            out.append("  ehlo=%r"%ehlo[:200])
+            if mode=="starttls":
+                s.sendall(b"STARTTLS\r\n"); out.append("  starttls=%r"%f.readline()[:80])
+                s=_ssl.create_default_context().wrap_socket(s,server_hostname=host)
+                f=s.makefile("rb"); s.sendall(b"EHLO localhost\r\n")
+                while True:
+                    line=f.readline()
+                    if not line or line[3:4]==b" ": break
+            s.sendall(b"AUTH LOGIN\r\n"); out.append("  auth=%r"%f.readline()[:80])
+            s.sendall(_b64.b64encode(USER.encode())+b"\r\n"); out.append("  user_resp=%r"%f.readline()[:80])
+            s.sendall(_b64.b64encode(PWD.encode())+b"\r\n")
+            r=f.readline(); out.append("  pass_resp=%r"%r[:200])
+            s.close()
+        except Exception as e:
+            out.append("%s:%d FAILED %s: %s"%(host,port,type(e).__name__,e))
+    return "\n".join(out)
+
 def main():
     if not USER or not PWD:
         print("ERR: credential missing (user=%s pwd_len=%d)" % (bool(USER), len(PWD))); return 2
     print("credential parsed: user=%s pwd_len=%d" % (USER[:3]+"***@qq.com", len(PWD)))
+    if _os.environ.get("DIAG"):
+        print(diag()); return 0
     pdf = None
     try:
         req = urllib.request.Request(PDF, headers={"User-Agent": "Mozilla/5.0"})
