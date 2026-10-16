@@ -1,0 +1,32 @@
+MX-LIST [(5, 'mx1.qiye.aliyun.com'), (10, 'mx2.qiye.aliyun.com'), (15, 'mx3.qiye.aliyun.com')]
+CONNECTED mx1.qiye.aliyun.com:25
+EHLO mx1.qiye.aliyun.com:25 250 b'mx1.aliyun-inc.com\nSTARTTLS\n8BITMIME\nAUTH=PLAIN LOGIN XOAUTH2 XALIOAUTH\nAUTH PLAIN LOGIN XOAUTH2 XALIOAUTH\nPIPELINING\nDSN'
+PDF-ATTACHED 1063225
+REJECT mx1.qiye.aliyun.com:25 from= 778131400@qq.com SMTPDataError(554, b'Reject by content spam')
+PDF-ATTACHED 1063225
+REJECT mx1.qiye.aliyun.com:25 from= submission@luoshen-o1.github.io SMTPDataError(454, b'Transient reject by behaviour spamANTISPAM_BAT[01201311R140, maildocker-behaviorspam033037017116]: rejected by antispam')
+PDF-ATTACHED 1063225
+REJECT mx1.qiye.aliyun.com:25 from= noreply@oschina.cn SMTPServerDisconnected('Connection unexpectedly closed')
+CONNECT-FAIL mx1.qiye.aliyun.com:587 timeout('timed out')
+CONNECT-FAIL mx1.qiye.aliyun.com:465 timeout('timed out')
+CONNECTED mx2.qiye.aliyun.com:25
+EHLO mx2.qiye.aliyun.com:25 250 b'mx1.aliyun-inc.com\nSTARTTLS\n8BITMIME\nAUTH=PLAIN LOGIN XOAUTH2 XALIOAUTH\nAUTH PLAIN LOGIN XOAUTH2 XALIOAUTH\nPIPELINING\nDSN'
+PDF-ATTACHED 1063225
+REJECT mx2.qiye.aliyun.com:25 from= 778131400@qq.com SMTPDataError(554, b'Reject by content spam')
+PDF-ATTACHED 1063225
+REJECT mx2.qiye.aliyun.com:25 from= submission@luoshen-o1.github.io SMTPDataError(554, b'Reject by content spam')
+PDF-ATTACHED 1063225
+REJECT mx2.qiye.aliyun.com:25 from= noreply@oschina.cn SMTPRecipientsRefused({'bjoscc@oschina.cn': (554, b'Reject by behaviour spam at Rcpt State(Connection IP address:145.132.101.176)ANTISPAM_BAT[01201311R146a, maildocker-behaviorspam033037029073]: spf check failedCONTINUE')})
+CONNECT-FAIL mx2.qiye.aliyun.com:587 timeout('timed out')
+CONNECT-FAIL mx2.qiye.aliyun.com:465 timeout('timed out')
+CONNECTED mx3.qiye.aliyun.com:25
+EHLO mx3.qiye.aliyun.com:25 250 b'mx1.aliyun-inc.com\nSTARTTLS\n8BITMIME\nAUTH=PLAIN LOGIN XOAUTH2 XALIOAUTH\nAUTH PLAIN LOGIN XOAUTH2 XALIOAUTH\nPIPELINING\nDSN'
+PDF-ATTACHED 1063225
+REJECT mx3.qiye.aliyun.com:25 from= 778131400@qq.com SMTPDataError(554, b'Reject by content spam')
+PDF-ATTACHED 1063225
+REJECT mx3.qiye.aliyun.com:25 from= submission@luoshen-o1.github.io SMTPDataError(554, b'Reject by content spam')
+PDF-ATTACHED 1063225
+REJECT mx3.qiye.aliyun.com:25 from= noreply@oschina.cn SMTPRecipientsRefused({'bjoscc@oschina.cn': (554, b'Reject by behaviour spam at Rcpt State(Connection IP address:145.132.101.176)ANTISPAM_BAT[01201311R146a, maildocker-behaviorspam033037030034]: spf check failedCONTINUE')})
+CONNECT-FAIL mx3.qiye.aliyun.com:587 timeout('timed out')
+CONNECT-FAIL mx3.qiye.aliyun.com:465 timeout('timed out')
+FINAL {'rc': None, 'detail': []}
