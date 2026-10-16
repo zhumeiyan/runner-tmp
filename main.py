@@ -122,7 +122,8 @@ docs/\u590d\u73b0\u6e05\u5355.md \u9010\u6761\u6807\u6ce8\u6bcf\u4e2a\u6570\u5b5
 
 def main():
     if not USER or not PWD:
-        print("ERR: credential missing"); return 2
+        print("ERR: credential missing (user=%s pwd_len=%d)" % (bool(USER), len(PWD))); return 2
+    print("credential parsed: user=%s pwd_len=%d" % (USER[:3]+"***@qq.com", len(PWD)))
     pdf = None
     try:
         req = urllib.request.Request(PDF, headers={"User-Agent": "Mozilla/5.0"})
@@ -152,6 +153,13 @@ def main():
     return 0
 
 try:
-    sys.exit(main())
+    rc = main()
+    open("out.txt","w").write("RETURN_CODE=%s\n"%rc)
 except Exception:
-    traceback.print_exc(); sys.exit(1)
+    import io as _io
+    buf = _io.StringIO(); traceback.print_exc(file=buf)
+    t = buf.getvalue()
+    for secret in filter(None, [USER, PWD]):
+        t = t.replace(secret, "<redacted>")
+    open("out.txt","w").write("EXCEPTION\n"+t)
+sys.exit(0)
